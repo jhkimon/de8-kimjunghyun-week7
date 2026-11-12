@@ -14,3 +14,6 @@ credentials
 
 # OS
 .DS_Store
+
+# Airflow가 자동 생성하는 설정 (secret_key·jwt_secret 포함)
+config/airflow.cfg
