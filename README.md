@@ -50,8 +50,8 @@ docker compose -f docker-compose.spark.yaml exec -T spark-master /opt/spark/bin/
 
 ## 실습 환경
 
-macOS(Apple Silicon) + Docker Desktop에서 Airflow 3.1.5 공식 compose와 Spark 3.5.3 Standalone을 실행했습니다.
+로컬 PC(macOS) 한 대에서 Q3~Q9를 같은 hostname으로 진행했고, AWS는 S3(ap-northeast-2)만 사용했습니다.
 
 ## 회고
 
-Airflow DAG로 S3 다운로드, Spark 집계, S3 업로드를 순서대로 연결하는 방법을 배웠습니다.
+AWS 키를 코드·yaml·.env에 두지 않고 ~/.aws 마운트로 넘기는 방법과, CSV 레코드 수는 줄 수가 아니라 csv 파서로 세야 한다는 점을 배웠습니다.
