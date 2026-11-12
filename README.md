@@ -26,3 +26,24 @@ docker compose up -d
 ```
 
 AWS 자격증명은 저장소에 두지 않습니다.
+
+## Q4 Spark Standalone wordcount
+
+공식 `spark:3.5.3-python3` 이미지로 master 1대, worker 1대(2 cores, 2 GiB)를 실행합니다.
+제공된 `wordcount.txt`를 `data/wordcount.txt`에 두세요. `data/`는 Git에서 제외되며,
+master와 worker 양쪽에 같은 경로로 읽기 전용 마운트됩니다.
+
+```bash
+docker compose -f docker-compose.spark.yaml up -d
+docker compose -f docker-compose.spark.yaml exec -T spark-master /opt/spark/bin/spark-submit \
+  --master spark://spark-master:7077 --deploy-mode client \
+  --conf spark.driver.host=spark-master --conf spark.driver.bindAddress=0.0.0.0 \
+  --conf spark.cores.max=2 --executor-memory 1g \
+  /opt/spark/jobs/wordcount.py /opt/spark/data/wordcount.txt
+```
+
+- Master UI: http://localhost:8082 (Completed Applications에서 완료 확인)
+- Worker UI: http://localhost:8083
+- 공백으로만 단어를 분리하고 대소문자·문장부호를 유지합니다.
+- 빈도 내림차순으로 상위 20개를 출력하며 동률은 단어 오름차순입니다.
+- 종료: `docker compose -f docker-compose.spark.yaml down`
