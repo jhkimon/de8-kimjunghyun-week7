@@ -1,0 +1,5 @@
+# Q5 커스텀 이미지에 추가하는 파이썬 패키지
+apache-airflow-providers-amazon==9.18.0
+apache-airflow-providers-apache-spark==5.6.0
+# Spark 클러스터(spark:3.5.3, docker-compose.spark.yaml)와 버전을 맞춤
+pyspark==3.5.3
