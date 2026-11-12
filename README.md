@@ -50,8 +50,8 @@ docker compose -f docker-compose.spark.yaml exec -T spark-master /opt/spark/bin/
 
 ## 실습 환경
 
-macOS(Apple Silicon) + Docker Desktop에서 Airflow 3.1.5 공식 compose와 Spark 3.5.3 Standalone을 실행했습니다.
+macOS(Apple Silicon, RAM 16GB) + Docker Desktop에서 커스텀 이미지(week7-airflow:kimjunghyun, JDK 17 + pyspark 3.5.3)로 Airflow 3.1.5 CeleryExecutor 환경을 띄웠습니다.
 
 ## 회고
 
-Airflow DAG로 S3 다운로드, Spark 집계, S3 업로드를 순서대로 연결하는 방법을 배웠습니다.
+XCom으로 Task 사이에 값을 넘기고, retries로 일시적 실패를 복구하고, catchup으로 과거 구간을 채우는 동작을 직접 확인했습니다.
