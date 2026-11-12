@@ -50,8 +50,10 @@ docker compose -f docker-compose.spark.yaml exec -T spark-master /opt/spark/bin/
 
 ## 실습 환경
 
+macOS(Apple Silicon, RAM 16GB) + Docker Desktop에서 커스텀 이미지(week7-airflow:kimjunghyun, JDK 17 + pyspark 3.5.3)로 Airflow 3.1.5 CeleryExecutor 환경을 띄웠습니다.
 로컬 PC(macOS) 한 대에서 Q3~Q9를 같은 hostname으로 진행했고, AWS는 S3(ap-northeast-2)만 사용했습니다.
 
 ## 회고
 
+XCom으로 Task 사이에 값을 넘기고, retries로 일시적 실패를 복구하고, catchup으로 과거 구간을 채우는 동작을 직접 확인했습니다.
 AWS 키를 코드·yaml·.env에 두지 않고 ~/.aws 마운트로 넘기는 방법과, CSV 레코드 수는 줄 수가 아니라 csv 파서로 세야 한다는 점을 배웠습니다.
