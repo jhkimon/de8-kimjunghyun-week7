@@ -47,3 +47,11 @@ docker compose -f docker-compose.spark.yaml exec -T spark-master /opt/spark/bin/
 - 공백으로만 단어를 분리하고 대소문자·문장부호를 유지합니다.
 - 빈도 내림차순으로 상위 20개를 출력하며 동률은 단어 오름차순입니다.
 - 종료: `docker compose -f docker-compose.spark.yaml down`
+
+## 실습 환경
+
+macOS(Apple Silicon) + Docker Desktop에서 Airflow 3.1.5 공식 compose와 Spark 3.5.3 Standalone을 실행했습니다.
+
+## 회고
+
+Airflow DAG로 S3 다운로드, Spark 집계, S3 업로드를 순서대로 연결하는 방법을 배웠습니다.
